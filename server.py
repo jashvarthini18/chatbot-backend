@@ -108,9 +108,20 @@ DEFAULT_PDF = os.path.join(UPLOAD_FOLDER, "coalVeer data.pdf")
 # ---------------- APP INIT ----------------
 app = FastAPI()
 
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://chatbot-frontend-iota-jet.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
