@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+python-dotenv
+torch
+pymupdf
+langchain
+langchain-community
+langchain-groq
+sentence-transformers
+faiss-cpu
+passlib[bcrypt]
+python-jose
