@@ -183,23 +183,51 @@ async def signup(data: AuthRequest):
     return {"message": "User created successfully"}
 
 
+# @app.post("/auth/login")
+# async def login(data: AuthRequest):
+#     user = users.get_user_by_email(data.email)
+
+#     if not user or not auth.verify_password(
+#         data.password, user["password"]
+#     ):
+#         raise HTTPException(status_code=401, detail="Invalid credentials")
+
+#     token = auth.create_access_token({"sub": user["email"]})
+
+#     return {
+#         "access_token": token,
+#         "token_type": "bearer"
+#     }
+
 @app.post("/auth/login")
 async def login(data: AuthRequest):
-    user = users.get_user_by_email(data.email)
+    try:
+        print("Login attempt:", data.email)
 
-    if not user or not auth.verify_password(
-        data.password, user["password"]
-    ):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
+        user = users.get_user_by_email(data.email)
+        print("User fetched:", user)
 
-    token = auth.create_access_token({"sub": user["email"]})
+        if not user:
+            raise HTTPException(status_code=401, detail="User not found")
 
-    return {
-        "access_token": token,
-        "token_type": "bearer"
-    }
+        print("Stored password:", user["password"])
 
+        valid = auth.verify_password(data.password, user["password"])
+        print("Password valid:", valid)
 
+        if not valid:
+            raise HTTPException(status_code=401, detail="Invalid credentials")
+
+        token = auth.create_access_token({"sub": user["email"]})
+
+        return {
+            "access_token": token,
+            "token_type": "bearer"
+        }
+
+    except Exception as e:
+        print("LOGIN ERROR:", str(e))
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000)
