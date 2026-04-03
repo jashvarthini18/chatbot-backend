@@ -9,4 +9,3 @@ passlib[bcrypt]
 python-jose
 langchain==0.1.16
 langchain-community==0.0.38
-InstructorEmbedding
