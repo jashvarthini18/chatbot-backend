@@ -9,9 +9,11 @@ from app.pdf import process_document
 from app.auth import verify_token
 import uvicorn
 
-UPLOAD_FOLDER = "uploads"
+# UPLOAD_FOLDER = "uploads"
+# DEFAULT_PDF = os.path.join(UPLOAD_FOLDER, "coalVeer data.pdf")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
 DEFAULT_PDF = os.path.join(UPLOAD_FOLDER, "coalVeer data.pdf")
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
