@@ -3,10 +3,12 @@ uvicorn
 python-dotenv
 torch
 pymupdf
-langchain
-langchain-community
+# langchain
+# langchain-community
 langchain-groq
 sentence-transformers
 faiss-cpu
 passlib[bcrypt]
 python-jose
+langchain==0.1.16
+langchain-community==0.0.38
