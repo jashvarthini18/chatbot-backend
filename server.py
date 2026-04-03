@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from app import rag, auth, users
 from app.pdf import process_document
 from app.auth import verify_token
+import uvicorn
 
 UPLOAD_FOLDER = "uploads"
 DEFAULT_PDF = os.path.join(UPLOAD_FOLDER, "coalVeer data.pdf")
@@ -34,7 +35,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -86,3 +87,9 @@ async def login(data: AuthRequest):
         "access_token": token,
         "token_type": "bearer"
     }
+
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
