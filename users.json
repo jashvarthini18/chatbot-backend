@@ -1,10 +1,6 @@
 [
   {
-    "email": "jashvarthinirajesh@gmail.com",
-    "password": "$2b$12$cc/sWeeVtvOK.6cOTmIF1OZv5ypzLVJXp7.dliiJQWYga2R7z/Vqu"
-  },
-  {
     "email": "admin@gmail.com",
-    "password": "$2b$12$dpk1tX2MCfFl9l1D9Kl.WuEC0OQ/OzWFwvD8fzMpAkXgec0BwiwAi"
+    "password": "$pbkdf2-sha256$29000$JYQwxthbK4UQYuw9pxTinA$av8t7pfICr5DM.NmDVsYt112/TbJf.XzHVSEaufl23A"
   }
 ]

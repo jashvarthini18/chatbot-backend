@@ -36,6 +36,7 @@ import os
 # ✅ FIX: absolute path
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 USERS_FILE = os.path.join(BASE_DIR, "..", "users.json")
+print("USERS FILE PATH =", os.path.abspath(USERS_FILE))
 
 
 def load_users():
